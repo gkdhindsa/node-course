@@ -19,37 +19,37 @@ MongoClient.connect(connectionURL, {
     }
     //created a db
     const db = client.db(databaseName)
-    // db.collection('users').findOne({_id: new ObjectID("60df0e6d343b777d90eba2d6")}, (error , user)=>{
-    //     if(error){
-    //         return console.log('Unable to fetch')
-    //     }
-    //     console.log(user)
-    // })
-    // //find returns a cursor and not the record itself
 
-    // db.collection('users').find({age: 19}).toArray((error, users)=>{
-      
-    //     console.log(users)
-    // })
+        db.collection('tasks').updateMany(
+            {
+                completed: false
+            }, {
+                $set:{
+                    completed: true
+                }
+            }).then((result)=>{
+                console.log(result)
+            }).catch((error)=>{
+                console.log('error')
+            })
 
-    // db.collection('users').find({age: 19}).count((error, count)=>{
-      
-    //     console.log(count)
-    // })
+    // const updatePromise=db.collection('users').updateOne(
+    //     {
+    //         name: 'Mike'
+    //     }, {
+    //         $inc: {
+    //         age: 1
+    //         }
+    //     })
+
+    //     updatePromise.then((result)=>{
+    //         console.log(result)
+    //     }).catch(()=>{
+    //     console.log(error)
+    //     })
 
 
-    db.collection('tasks').findOne({_id: ObjectID("60df0c87405f26790838e858")}, (error, task)=>{
-        if(error)
-        {
-            return console.log('Unable to fetch')
-        }
-        console.log(task)
-    })
-
-    db.collection('tasks').find({completed: false}).toArray((error, data)=>{
-
-        console.log(data)
-    })
+    
 
 })
 

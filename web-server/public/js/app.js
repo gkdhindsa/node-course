@@ -1,23 +1,27 @@
-let form=document.querySelector('#form')
+let form = document.querySelector('#form')
 console.log(form)
-form.addEventListener('submit', (e)=>{
+let messageOne = document.querySelector('#location')
+let messageTwo = document.querySelector('#forecast')
+
+
+form.addEventListener('submit', (e) => {
     e.preventDefault()
-   let address=document.querySelector('#address') .value
+    let address = document.querySelector('#address').value
     console.log(address)
 
+messageOne.textContent='Loading...'
+messageTwo.textContent=''
+    fetch(`http://localhost:3000/weather?address=${address}`).then((response) => {
+        response.json().then((data) => {
+            if (data.errorMessage) {
+                messageOne.textContent(data.error)
+            } else {
 
-    fetch(`http://localhost:3000/weather?address=${address}`).then((response)=>{
-    response.json().then((data)=>{
-        if(data.errorMessage){
-            console.log(errorMessage)
-        }
-        else{
-            let him=document.querySelector('#result')
-            him.textContent('"location: "+data.location+" "+data.forecast)
-         
-        }
+                messageOne.textContent=(data.location)
+                messageTwo.textContent=(data.forecast)
+
+
+            }
+        })
     })
 })
-})
-
-   

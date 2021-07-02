@@ -15,7 +15,7 @@ request({
         callback('Unable to find these coordinates')
     } 
     else {
-        const str=`temp: ${body.current.temperature} feels like: ${body.current.feelslike}`
+        const str=`Actual temperature: ${body.current.temperature}, Feels like: ${body.current.feelslike}`
         callback(undefined, str)
     }
 })

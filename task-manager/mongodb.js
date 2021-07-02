@@ -20,36 +20,12 @@ MongoClient.connect(connectionURL, {
     //created a db
     const db = client.db(databaseName)
 
-        db.collection('tasks').updateMany(
-            {
-                completed: false
-            }, {
-                $set:{
-                    completed: true
-                }
-            }).then((result)=>{
-                console.log(result)
-            }).catch((error)=>{
-                console.log('error')
-            })
-
-    // const updatePromise=db.collection('users').updateOne(
-    //     {
-    //         name: 'Mike'
-    //     }, {
-    //         $inc: {
-    //         age: 1
-    //         }
-    //     })
-
-    //     updatePromise.then((result)=>{
-    //         console.log(result)
-    //     }).catch(()=>{
-    //     console.log(error)
-    //     })
-
-
-    
-
+        db.collection('users').deleteMany({
+            age: 90
+        }).then((result)=>{
+            console.log(result)
+        }).catch((error)=>{
+            console.log(error)
+        })
 })
 

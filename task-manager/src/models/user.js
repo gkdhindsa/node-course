@@ -32,6 +32,17 @@ const User = mongoose.model('User',{
                 throw new Error('Email is invalid')
             }
         }
+    },
+    age:{
+        type: Number,
+        requires: false,
+        validate(value)
+        {
+            if(value<0)
+            {
+                throw new Error('Age must be positive')
+            }
+        }
     }
 })
 

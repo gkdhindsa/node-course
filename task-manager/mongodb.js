@@ -20,8 +20,8 @@ MongoClient.connect(connectionURL, {
     //created a db
     const db = client.db(databaseName)
 
-        db.collection('users').deleteMany({
-            age: 90
+        db.collection('tasks').deleteOne({
+            description: 'desc for task 1'
         }).then((result)=>{
             console.log(result)
         }).catch((error)=>{

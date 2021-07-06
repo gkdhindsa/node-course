@@ -8,6 +8,20 @@ const TaskRouter=require('./routers/task')
 const app = express()
 const port = process.env.PORT || 3000
 
+// app.use((req,res,next)=>{
+//     if(req.method==='GET')
+//     {
+//         res.send('Get requests are disabled')
+//     }
+//     else{
+//         next()
+//     }
+// })\
+//Maintenance
+// app.use((req,res,next)=>{
+//     res.status(503).send('The site is under maintenance ')
+// })
+
 app.use(express.json())
 app.use(UserRouter)
 app.use(TaskRouter)
@@ -18,16 +32,3 @@ app.listen(port, () => {
 })
 
 
-// const bcrypt=require('bcryptjs')
-// const myFunction=async()=>{
-//     const password='Nehmat98!'
-//     const hashedPassword=await bcrypt.hash(password, 8)
-
-//     console.log(password)
-//     console.log(hashedPassword)
-
-//     const isMatch=await bcrypt.compare('Nehmat98!', hashedPassword)
-//     console.log(isMatch)
-// }
-
-// myFunction()
